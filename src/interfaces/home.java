@@ -5,6 +5,8 @@
  */
 package interfaces;
 
+import chami.chome;
+
 /**
  *
  * @author ACER
@@ -140,6 +142,11 @@ public class home extends javax.swing.JFrame {
         jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(20, 61, 89), 5));
         jLabel12.setOpaque(true);
         jLabel12.setPreferredSize(new java.awt.Dimension(140, 140));
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
 
         jLabel11.setBackground(new java.awt.Color(244, 180, 26));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -166,6 +173,11 @@ public class home extends javax.swing.JFrame {
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(20, 61, 89), 5));
         jLabel7.setOpaque(true);
         jLabel7.setPreferredSize(new java.awt.Dimension(150, 150));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jLabel9.setBackground(new java.awt.Color(244, 180, 26));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -371,6 +383,18 @@ public class home extends javax.swing.JFrame {
         h1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+         chami.chome h1 = new chami.chome();
+        h1.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        chami.selectNO_sub h1 = new chami.selectNO_sub();
+        h1.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments

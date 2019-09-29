@@ -6,12 +6,9 @@
 package interfaces;
 
 import DB.db_connection;
-import com.sun.org.apache.xalan.internal.Version;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
