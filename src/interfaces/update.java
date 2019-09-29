@@ -131,7 +131,7 @@ public class update extends javax.swing.JFrame {
         jLabel2.setText("ID");
 
         jTextField1.setBackground(new java.awt.Color(244, 212, 122));
-        jTextField1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +151,7 @@ public class update extends javax.swing.JFrame {
         });
 
         jTextField10.setBackground(new java.awt.Color(244, 212, 122));
-        jTextField10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jTextField10.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
@@ -735,7 +735,7 @@ public class update extends javax.swing.JFrame {
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel4);
@@ -791,7 +791,7 @@ public class update extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
        
         try {
-            
+                    
             
         int r = jTable1.getSelectedRow();
 
@@ -802,26 +802,24 @@ public class update extends javax.swing.JFrame {
         String Administraivedistrict = jTable1.getValueAt(r,4).toString();
         String TelephoneNumber = jTable1.getValueAt(r,5).toString();
             DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-           int Dateofbirth = jTable1.getSelectedRow();
+            int Dateofbirth = jTable1.getSelectedRow();
            Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(r,6).toString());
         String Age = jTable1.getValueAt(r,7).toString();
         String Race = jTable1.getValueAt(r,8).toString();
- //       String RevofMr = jTable1.getValueAt(r,9).toString();
+        String RevofMr = jTable1.getValueAt(r,9).toString();
         String Photo = jTable1.getValueAt(r,10).toString();
-//        String Fingerprint= jTable1.getValueAt(r,11).toString();
-        String permanentAddress = jTable1.getValueAt(r,12).toString();
+        String permanentAddress = jTable1.getValueAt(r,11).toString();
            DefaultTableModel modell = (DefaultTableModel)jTable1.getModel();
            int registeryear = jTable1.getSelectedRow();
            Date year = new SimpleDateFormat("yyyy-MM-dd").parse((String)modell.getValueAt(r,13).toString());
-//        String registeryear = jTable1.getValueAt(r,13).toString();
-        String email = jTable1.getValueAt(r,14).toString();
+        String email = jTable1.getValueAt(r,12).toString();
         
 
         jTextField11.setText(Id);
         jTextField2.setText(Nameoftheapplicant);
         jTextField3.setText(Namedentedbyinitials);
         jTextField4.setText(Nationalidentitycardnumber);
-        jTextField5.setText(permanentAddress);
+       jTextField5.setText(permanentAddress);
         jTextField6.setText(Administraivedistrict);
         jTextField7.setText(TelephoneNumber);
         jDateChooser2.setDate(date);
@@ -830,10 +828,11 @@ public class update extends javax.swing.JFrame {
         jTextField8.setText(Race);
         jTextField13.setText(email);
        // jLabel12.setIcon(ResizeImage(null,getProductlist().get(ind)));
-        // jTextField11.setText(Id);
-       
+        //jTextField11.setText(registeryear);
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaa");
 
         } catch (Exception e) {
+             System.out.println(e); 
         }
         
     }//GEN-LAST:event_jTable1MouseClicked
@@ -866,7 +865,7 @@ public class update extends javax.swing.JFrame {
         
         
         
-        String sql = "UPDATE student SET `Name of the applicant`='"+ Nameoftheapplicant +"',`Name dented by initials`='"+ Namedentedbyinitials +"',`National identity card number`='"+Nationalidentitycardnumber+"',`Administraive district`='"+Administraivedistrict+"',`Telephone Number`='"+TelephoneNumber+"',`email`='"+email+"',`Age`='"+Age+"',`Race`='"+Race+"' where Id = '"+Id+"'";
+        String sql = "UPDATE student SET `NameOfTheApplicant`='"+ Nameoftheapplicant +"',`NameDentedByInitials`='"+ Namedentedbyinitials +"',`NationalIdentityCardNumber`='"+Nationalidentitycardnumber+"',`AdministrativeDistrict`='"+Administraivedistrict+"',`TelephoneNumber`='"+TelephoneNumber+"',`Email`='"+email+"',`Age`='"+Age+"',`Race`='"+Race+"' where Id = '"+Id+"'";
         
         //,,,,'"+permanentAddress+"',,,'"+EmailAddress+"','"+bdate+"',,,'"+image+"','"+gender+"'
         
@@ -895,7 +894,7 @@ public class update extends javax.swing.JFrame {
         String Nameoftheapplicant = jTextField1.getText();
         String Id = jTextField10.getText();
         
-        String sql = "Select * From student Where `Name of the applicant` LIKE '%"+ Nameoftheapplicant +"%' or `Id` ='"+ Id +"'";
+        String sql = "Select * From student Where `Id` ='"+ Id +"'  or `NameOfTheApplicant` LIKE '%"+ Nameoftheapplicant +"%'";
        
         
         try {

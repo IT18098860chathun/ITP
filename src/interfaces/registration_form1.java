@@ -2,7 +2,6 @@
 package interfaces;
 
 import DB.db_connection;
-import static interfaces.registration_form1.main;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.ByteArrayOutputStream;
@@ -52,6 +51,7 @@ public class registration_form1 extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         canvas1 = new java.awt.Canvas();
         jLabel9 = new javax.swing.JLabel();
@@ -150,6 +150,13 @@ public class registration_form1 extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(102, 255, 255));
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -165,8 +172,10 @@ public class registration_form1 extends javax.swing.JFrame {
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
-                            .addComponent(jTextField2))))
-                .addGap(0, 347, Short.MAX_VALUE))
+                            .addComponent(jTextField2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 259, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +183,9 @@ public class registration_form1 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -850,7 +861,7 @@ public class registration_form1 extends javax.swing.JFrame {
           //DB insert  
             con = new db_connection().getConnection();
 
-            String q = " INSERT INTO student (`register year`,`Name of the applicant`,`Name dented by initials`,`National identity card number`,`permanent Address`,`Administraive district`,`Telephone Number`,`email`,`Date of birth`,`Age`,`Race`,`Photo`,`Rev of Mr`) "
+            String q = " INSERT INTO student (`RegisterYear`,`NameOfTheApplicant`,`NameDentedByInitials`,`NationalIdentityCardNumber`,`PermanentAddress`,`AdministrativeDistrict`,`TelephoneNumber`,`Email`,`DateOfBirth`,`Age`,`Race`,`Photo`,`RevofMr`) "
                     
                     + " values ('"+ ryear +"','"+ Nameoftheapplicant +"','"+ Namedentedbyinitials +"','"+Nationalidentitycardnumber+"','"+permanentAddress+"','"+Administraivedistrict+"','"+TelephoneNumber+"','"+EmailAddress+"','"+bdate+"','"+Age+"','"+Race+"','"+image+"','"+gender+"')";
 
@@ -1080,6 +1091,19 @@ public class registration_form1 extends javax.swing.JFrame {
             
     }//GEN-LAST:event_jTextField10MouseClicked
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+       ////////
+       jTextField1.setText("Welaffili Arachchige Chathun Randika");
+       jTextField2.setText("W.A.Chathun Randika");
+       jTextField3.setText("9724658145V");
+       jTextField4.setText("56/15A,asirilen,kalubowila");
+       jTextField5.setText("colombo");
+       jTextField6.setText("123456789");
+       jTextField11.setText("chathun");
+       jTextField7.setText("Sinhala");
+       
+    }//GEN-LAST:event_jButton2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1119,6 +1143,7 @@ public class registration_form1 extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private java.awt.Canvas canvas1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
