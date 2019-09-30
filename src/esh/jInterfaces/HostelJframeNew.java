@@ -15,9 +15,11 @@ import javax.swing.JOptionPane;
 import esh.models.Student;
 import esh.models.Hostels;
 import esh.models.Notices;
+import esh.models.Prolblems;
 import esh.models.Requests;
 import net.proteanit.sql.DbUtils;
 import esh.services.Services;
+import java.util.ArrayList;
 
 /**
  *
@@ -59,15 +61,15 @@ public class HostelJframeNew extends javax.swing.JFrame {
         manualReg = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        name = new javax.swing.JTextField();
+        sAge = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        nic = new javax.swing.JTextField();
+        sNIC = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         regId = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        faculty = new javax.swing.JComboBox<>();
-        acedemicyear = new javax.swing.JComboBox<>();
+        sName = new javax.swing.JTextField();
+        sDob = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -115,7 +117,11 @@ public class HostelJframeNew extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         updateBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
+        reportBtnHos = new javax.swing.JButton();
         usid = new javax.swing.JLabel();
+        usid1 = new javax.swing.JLabel();
+        usid2 = new javax.swing.JLabel();
+        ussid = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -169,8 +175,8 @@ public class HostelJframeNew extends javax.swing.JFrame {
         problemDescription = new javax.swing.JTextField();
         problemSubject = new javax.swing.JTextField();
         jPanel18 = new javax.swing.JPanel();
-        slovedBtn = new javax.swing.JButton();
-        deniedBtn1 = new javax.swing.JButton();
+        fixBtn = new javax.swing.JButton();
+        sendReportBtn = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
         problemStatus = new javax.swing.JLabel();
 
@@ -230,19 +236,20 @@ public class HostelJframeNew extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Name:");
 
-        name.setBackground(new java.awt.Color(244, 212, 122));
-        name.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        name.setForeground(new java.awt.Color(20, 61, 89));
+        sAge.setEditable(false);
+        sAge.setBackground(new java.awt.Color(244, 212, 122));
+        sAge.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        sAge.setForeground(new java.awt.Color(20, 61, 89));
 
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(20, 61, 89));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("NIC:");
 
-        nic.setBackground(new java.awt.Color(244, 212, 122));
-        nic.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        nic.setForeground(new java.awt.Color(20, 61, 89));
-        nic.setText("981232123V/X");
+        sNIC.setEditable(false);
+        sNIC.setBackground(new java.awt.Color(244, 212, 122));
+        sNIC.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        sNIC.setForeground(new java.awt.Color(20, 61, 89));
 
         jLabel12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(20, 61, 89));
@@ -261,22 +268,21 @@ public class HostelJframeNew extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(20, 61, 89));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("Faculty:");
+        jLabel13.setText("Date of Birth:");
 
         jLabel14.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(20, 61, 89));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel14.setText("Acedemic Year:");
+        jLabel14.setText("Age:");
 
-        faculty.setBackground(new java.awt.Color(244, 212, 122));
-        faculty.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        faculty.setForeground(new java.awt.Color(20, 61, 89));
-        faculty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Faculty of English", "Faculty of Buddist", "Faculty of Pali", "Item 4" }));
+        sName.setBackground(new java.awt.Color(244, 212, 122));
+        sName.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        sName.setForeground(new java.awt.Color(20, 61, 89));
 
-        acedemicyear.setBackground(new java.awt.Color(244, 212, 122));
-        acedemicyear.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        acedemicyear.setForeground(new java.awt.Color(20, 61, 89));
-        acedemicyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        sDob.setEditable(false);
+        sDob.setBackground(new java.awt.Color(244, 212, 122));
+        sDob.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        sDob.setForeground(new java.awt.Color(20, 61, 89));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -292,11 +298,11 @@ public class HostelJframeNew extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(acedemicyear, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(faculty, 0, 400, Short.MAX_VALUE)
-                    .addComponent(name)
+                    .addComponent(sAge)
                     .addComponent(regId)
-                    .addComponent(nic))
+                    .addComponent(sNIC, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                    .addComponent(sName)
+                    .addComponent(sDob))
                 .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -309,20 +315,20 @@ public class HostelJframeNew extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(faculty, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sDob, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel14)
+                    .addComponent(sAge, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(acedemicyear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(nic, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                    .addComponent(sNIC, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -360,25 +366,26 @@ public class HostelJframeNew extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(roomNumber, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(dateFromChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dateToChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(hostalName, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(dateFromChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateToChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(hostalName, 0, 403, Short.MAX_VALUE)
+                    .addComponent(roomNumber, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(176, 176, 176))
         );
         jPanel6Layout.setVerticalGroup(
@@ -388,14 +395,14 @@ public class HostelJframeNew extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hostalName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateFromChooser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel20))
-                    .addComponent(dateToChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(8, 8, 8)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel20)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(dateFromChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dateToChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(roomNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -438,7 +445,7 @@ public class HostelJframeNew extends javax.swing.JFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout manualRegLayout = new javax.swing.GroupLayout(manualReg);
@@ -458,12 +465,12 @@ public class HostelJframeNew extends javax.swing.JFrame {
             manualRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manualRegLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(200, 200, 200))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Manual Registration", manualReg);
@@ -670,7 +677,7 @@ public class HostelJframeNew extends javax.swing.JFrame {
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(824, 824, 824))
         );
 
@@ -751,16 +758,26 @@ public class HostelJframeNew extends javax.swing.JFrame {
             }
         });
 
+        reportBtnHos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        reportBtnHos.setText("Report");
+        reportBtnHos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportBtnHosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addGap(24, 24, 24)
                 .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(reportBtnHos, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -768,11 +785,22 @@ public class HostelJframeNew extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteBtn)
-                    .addComponent(updateBtn))
+                    .addComponent(updateBtn)
+                    .addComponent(reportBtnHos))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        usid.setText("jLabel2");
+        usid.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        usid.setText("Not Selected");
+
+        usid1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        usid1.setText("Hostel Id:");
+
+        usid2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        usid2.setText("Student Id:");
+
+        ussid.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        ussid.setText("Not Selected");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -799,15 +827,26 @@ public class HostelJframeNew extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(128, 128, 128)
+                .addGap(35, 35, 35)
+                .addComponent(usid1)
+                .addGap(18, 18, 18)
                 .addComponent(usid)
+                .addGap(67, 67, 67)
+                .addComponent(usid2)
+                .addGap(18, 18, 18)
+                .addComponent(ussid)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(usid)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usid)
+                    .addComponent(usid1)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ussid)
+                        .addComponent(usid2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(uhostalName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -944,7 +983,7 @@ public class HostelJframeNew extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(808, Short.MAX_VALUE))
+                .addContainerGap(821, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(" View Details", jPanel3);
@@ -1114,7 +1153,7 @@ public class HostelJframeNew extends javax.swing.JFrame {
                     .addComponent(n_description, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 55, Short.MAX_VALUE))
         );
 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Notices", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial Rounded MT Bold", 0, 18))); // NOI18N
@@ -1227,7 +1266,7 @@ public class HostelJframeNew extends javax.swing.JFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(799, Short.MAX_VALUE))
+                .addContainerGap(815, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(" Notices", jPanel10);
@@ -1378,19 +1417,19 @@ public class HostelJframeNew extends javax.swing.JFrame {
 
         jPanel18.setBackground(new java.awt.Color(20, 61, 89));
 
-        slovedBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        slovedBtn.setText("Sloved");
-        slovedBtn.addActionListener(new java.awt.event.ActionListener() {
+        fixBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        fixBtn.setText("Fix");
+        fixBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                slovedBtnActionPerformed(evt);
+                fixBtnActionPerformed(evt);
             }
         });
 
-        deniedBtn1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        deniedBtn1.setText("Denied");
-        deniedBtn1.addActionListener(new java.awt.event.ActionListener() {
+        sendReportBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        sendReportBtn.setText("Send Report");
+        sendReportBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deniedBtn1ActionPerformed(evt);
+                sendReportBtnActionPerformed(evt);
             }
         });
 
@@ -1400,18 +1439,18 @@ public class HostelJframeNew extends javax.swing.JFrame {
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addContainerGap(164, Short.MAX_VALUE)
-                .addComponent(slovedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fixBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(deniedBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(152, 152, 152))
+                .addComponent(sendReportBtn)
+                .addGap(94, 94, 94))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(slovedBtn)
-                    .addComponent(deniedBtn1))
+                    .addComponent(fixBtn)
+                    .addComponent(sendReportBtn))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -1420,6 +1459,7 @@ public class HostelJframeNew extends javax.swing.JFrame {
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel36.setText("Student ID:");
 
+        problemStatus.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         problemStatus.setText("jLabel9");
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
@@ -1505,7 +1545,7 @@ public class HostelJframeNew extends javax.swing.JFrame {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(769, Short.MAX_VALUE))
+                .addContainerGap(785, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(" Maintrance", jPanel16);
@@ -1659,8 +1699,10 @@ public class HostelJframeNew extends javax.swing.JFrame {
         String udf = jTable2.getValueAt(row, 2).toString();
         String udt = jTable2.getValueAt(row, 3).toString();
         String uroomnumber = jTable2.getValueAt(row, 1).toString();
+        String ssid = jTable2.getValueAt(row, 5).toString();
         
         usid.setText(hid);
+        ussid.setText(ssid);
         uhostalName.setSelectedItem(uhname);
         ufd.setText(udf);
         utd.setText(udt);
@@ -1702,13 +1744,25 @@ public class HostelJframeNew extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_problemDescriptionActionPerformed
 
-    private void slovedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slovedBtnActionPerformed
+    private void fixBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_slovedBtnActionPerformed
+        int val = JOptionPane.showConfirmDialog(null, "Update problem as fixed?");
+        if(val == 0){
+                        Prolblems p = new Prolblems();
+                        p.setPid(problemId.getText().toString());
+             
+                        services.updateProblem(p);
+                        problemTable.setModel(DbUtils.resultSetToTableModel(services.tableloadProblems()));
+        }   
+    }//GEN-LAST:event_fixBtnActionPerformed
 
-    private void deniedBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deniedBtn1ActionPerformed
+    private void sendReportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendReportBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_deniedBtn1ActionPerformed
+        MaintranceReport maintranceReport = new MaintranceReport(problemId.getText(), problemSid.getText(),
+                problemCategory.getText(), problemSubject.getText(),
+                problemDescription.getText(), problemStatus.getText());
+        maintranceReport.setVisible(true);
+    }//GEN-LAST:event_sendReportBtnActionPerformed
 
     private void noticeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noticeTableMouseClicked
         // TODO add your handling code here:
@@ -1812,15 +1866,35 @@ public class HostelJframeNew extends javax.swing.JFrame {
     }//GEN-LAST:event_searchFiltterView6ActionPerformed
 
     private void regIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regIdActionPerformed
+        ArrayList arrayList = new ArrayList();
         try {
             // TODO add your handling code here:
-            //String id = regId.getText().toString();
-            System.out.println(DbUtils.resultSetToNestedList(services.tableLoadStudent()));
+            String id = regId.getText().toString();
+            arrayList = services.getStudentValues(id);
+            sName.setText(arrayList.get(0).toString());
+            sDob.setText(arrayList.get(1).toString());
+            sAge.setText(arrayList.get(2).toString());
+            sNIC.setText(arrayList.get(3).toString());  
         } catch (Exception ex) {
-            Logger.getLogger(HostelJframeNew.class.getName()).log(Level.SEVERE, null, ex);
+            clearFeilds();
+            //Logger.getLogger(HostelJframeNew.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_regIdActionPerformed
 
+    private void reportBtnHosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportBtnHosActionPerformed
+        
+        HostelReport hostelReport = new HostelReport(ussid.getText(),uhostalName.getSelectedItem().toString(),
+                ufd.getText(),utd.getText(),uroomNumber.getSelectedItem().toString());
+        hostelReport.setVisible(true);
+        
+    }//GEN-LAST:event_reportBtnHosActionPerformed
+
+    void clearFeilds(){
+            sName.setText("");
+            sDob.setText("");
+            sAge.setText("");
+            sNIC.setText("");
+    }
     /**
      * @param args the command line arguments
      */
@@ -1864,13 +1938,11 @@ public class HostelJframeNew extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> acedemicyear;
     private com.toedter.calendar.JDateChooser dateFromChooser;
     private com.toedter.calendar.JDateChooser dateToChooser;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton deniedBtn;
-    private javax.swing.JButton deniedBtn1;
-    private javax.swing.JComboBox<String> faculty;
+    private javax.swing.JButton fixBtn;
     private javax.swing.JComboBox<String> hostalName;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
@@ -1951,8 +2023,6 @@ public class HostelJframeNew extends javax.swing.JFrame {
     private javax.swing.JLabel n_noticeId;
     private javax.swing.JLabel n_status;
     private javax.swing.JTextField n_subject;
-    private javax.swing.JTextField name;
-    private javax.swing.JTextField nic;
     private javax.swing.JTextField noticeSid;
     private javax.swing.JTable noticeTable;
     private javax.swing.JTextField problemCategory;
@@ -1966,6 +2036,7 @@ public class HostelJframeNew extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser rdateToChooser;
     private javax.swing.JTextField regId;
     private javax.swing.JButton registerBtn;
+    private javax.swing.JButton reportBtnHos;
     private javax.swing.JButton requestAddHostal;
     private javax.swing.JTable requestTable;
     private javax.swing.JLabel requestsid;
@@ -1973,6 +2044,10 @@ public class HostelJframeNew extends javax.swing.JFrame {
     private javax.swing.JLabel rid;
     private javax.swing.JComboBox<String> roomNumber;
     private javax.swing.JComboBox<String> rroomNumber;
+    private javax.swing.JTextField sAge;
+    private javax.swing.JTextField sDob;
+    private javax.swing.JTextField sNIC;
+    private javax.swing.JTextField sName;
     private javax.swing.JComboBox<String> searchFiltterView;
     private javax.swing.JComboBox<String> searchFiltterView5;
     private javax.swing.JComboBox<String> searchFiltterView6;
@@ -1981,12 +2056,15 @@ public class HostelJframeNew extends javax.swing.JFrame {
     private javax.swing.JTextField searchTxtNotice;
     private javax.swing.JTextField searchTxtProblems;
     private javax.swing.JTextField searchTxtView;
-    private javax.swing.JButton slovedBtn;
+    private javax.swing.JButton sendReportBtn;
     private javax.swing.JTextField ufd;
     private javax.swing.JComboBox<String> uhostalName;
     private javax.swing.JButton updateBtn;
     private javax.swing.JComboBox<String> uroomNumber;
     private javax.swing.JLabel usid;
+    private javax.swing.JLabel usid1;
+    private javax.swing.JLabel usid2;
+    private javax.swing.JLabel ussid;
     private javax.swing.JTextField utd;
     private javax.swing.JButton veryfyBtn;
     // End of variables declaration//GEN-END:variables
