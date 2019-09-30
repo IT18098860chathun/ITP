@@ -6,6 +6,7 @@
 package interfaces;
 
 import chami.chome;
+import esh.jInterfaces.HostelJframeNew;
 import sun.security.krb5.internal.crypto.Des;
 import java.awt.Desktop;
 import java.io.IOException;
@@ -391,7 +392,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-         HostelJframe h1 = new HostelJframe();
+        esh.jInterfaces.HostelJframeNew h1 = new HostelJframeNew();
         h1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
