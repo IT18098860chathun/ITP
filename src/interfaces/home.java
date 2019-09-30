@@ -6,6 +6,13 @@
 package interfaces;
 
 import chami.chome;
+import sun.security.krb5.internal.crypto.Des;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -112,10 +119,15 @@ public class home extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(244, 180, 26));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Desktop\\New folder (6)\\library.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/library.png"))); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(20, 61, 89), 5));
         jLabel4.setOpaque(true);
         jLabel4.setPreferredSize(new java.awt.Dimension(150, 150));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(244, 180, 26));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -181,7 +193,7 @@ public class home extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(244, 180, 26));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Desktop\\New folder (6)\\icons8-user-male-100.png")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/attendance.png"))); // NOI18N
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(20, 61, 89), 5));
         jLabel9.setOpaque(true);
 
@@ -395,6 +407,10 @@ public class home extends javax.swing.JFrame {
         h1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
