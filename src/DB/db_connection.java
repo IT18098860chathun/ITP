@@ -11,7 +11,7 @@ public class db_connection {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-private String url = "jdbc:mysql://localhost:3306/uni";
+private String url = "jdbc:mysql://localhost:3306/pbuni";
 private String user = "root";
 private String password = "c1234";
 private String driver = "com.mysql.cj.jdbc.Driver";

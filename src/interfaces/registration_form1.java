@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.*;
@@ -23,6 +25,7 @@ public class registration_form1 extends javax.swing.JFrame {
 
     Connection con = null;
     PreparedStatement pst = null;
+    Statement sta = null;
     String filename = null; //image
     byte[] person_image = null; //image
     String gender;
@@ -30,6 +33,7 @@ public class registration_form1 extends javax.swing.JFrame {
     public registration_form1() {
         initComponents();
        
+        AntoID();
     }
     
     public void clearAll(){
@@ -52,6 +56,8 @@ public class registration_form1 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         canvas1 = new java.awt.Canvas();
         jLabel9 = new javax.swing.JLabel();
@@ -158,40 +164,57 @@ public class registration_form1 extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(244, 212, 122));
+        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel3.setOpaque(true);
+
+        jLabel12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel12.setText("Student ID");
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
-                            .addComponent(jTextField2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                                    .addComponent(jTextField2)))
+                            .addComponent(jLabel12)))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 259, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -772,7 +795,28 @@ public class registration_form1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-  
+  public void AntoID()
+  {
+      try {
+          con = new db_connection().getConnection();
+          sta = con.createStatement();
+          ResultSet rs = sta.executeQuery("select MAX(Id) from student");
+          rs.next();
+          rs.getString("MAX(Id)");
+          if(rs.getString("MAX(Id)") == null)
+          {
+              jLabel3.setText("S001");
+          }
+          else{
+              long id = Long.parseLong(rs.getString("MAX(Id)").substring(2,rs.getString("MAX(Id)").length()));
+              id++;
+              jLabel3.setText("S"+String.format("%03d", id));
+          }
+          
+      } catch (Exception e) {
+          System.out.println(""+e.toString());
+      }
+  }
     
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
 
@@ -852,6 +896,7 @@ public class registration_form1 extends javax.swing.JFrame {
         try {
             SimpleDateFormat ddateFormat = new SimpleDateFormat("yyy-MM-dd");
         String ryear = ddateFormat.format(jDateChooser3.getDate());
+        String sid = jLabel3.getText();
         String Nameoftheapplicant = jTextField1.getText();
         String Namedentedbyinitials = jTextField2.getText();
         String Nationalidentitycardnumber =jTextField3.getText();
@@ -874,9 +919,9 @@ public class registration_form1 extends javax.swing.JFrame {
           //DB insert  
             con = new db_connection().getConnection();
 
-            String q = " INSERT INTO student (`RegisterYear`,`NameOfTheApplicant`,`NameDentedByInitials`,`NationalIdentityCardNumber`,`PermanentAddress`,`AdministrativeDistrict`,`TelephoneNumber`,`Email`,`DateOfBirth`,`Age`,`Race`,`Photo`,`RevofMr`) "
+            String q = " INSERT INTO student (`RegisterYear`,`Id`,`NameOfTheApplicant`,`NameDentedByInitials`,`NationalIdentityCardNumber`,`PermanentAddress`,`AdministrativeDistrict`,`TelephoneNumber`,`Email`,`DateOfBirth`,`Age`,`Race`,`Photo`,`RevofMr`) "
                     
-                    + " values ('"+ ryear +"','"+ Nameoftheapplicant +"','"+ Namedentedbyinitials +"','"+Nationalidentitycardnumber+"','"+permanentAddress+"','"+Administraivedistrict+"','"+TelephoneNumber+"','"+EmailAddress+"','"+bdate+"','"+Age+"','"+Race+"','"+image+"','"+gender+"')";
+                    + " values ('"+ ryear +"','"+sid+"','"+ Nameoftheapplicant +"','"+ Namedentedbyinitials +"','"+Nationalidentitycardnumber+"','"+permanentAddress+"','"+Administraivedistrict+"','"+TelephoneNumber+"','"+EmailAddress+"','"+bdate+"','"+Age+"','"+Race+"','"+image+"','"+gender+"')";
 
             pst = con.prepareStatement(q);
             pst.execute();
@@ -884,7 +929,7 @@ public class registration_form1 extends javax.swing.JFrame {
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
-
+        jLabel3.setText(null);
         jTextField1.setText(null);
         jTextField2.setText(null);
         jTextField3.setText(null);
@@ -903,7 +948,7 @@ public class registration_form1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        
+        jLabel3.setText(null);
         jTextField1.setText(null);
         jTextField2.setText(null);
         jTextField3.setText(null);
@@ -1172,6 +1217,7 @@ public class registration_form1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1181,6 +1227,7 @@ public class registration_form1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

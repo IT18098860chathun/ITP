@@ -9,6 +9,9 @@ import DB.db_connection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -18,8 +21,8 @@ import net.proteanit.sql.DbUtils;
 public class attendance extends javax.swing.JFrame {
 
     
-    Connection con = null;
-    PreparedStatement pst = null;
+    Connection con;
+    PreparedStatement pst;
     ResultSet rs = null;
     
     
@@ -33,13 +36,30 @@ public class attendance extends javax.swing.JFrame {
     
     public void tableload()
     {
+        Connection con;
         try {
             
            con = new db_connection().getConnection();
-            String sql = "SELECT `Id`,`Name of the applicant`FROM student";
+            String sql = "SELECT `Id`,`Nameoftheapplicant`FROM student";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            
+            ResultSetMetaData rsd = rs.getMetaData();
+            int c;
+            c=rsd.getColumnCount();
+            DefaultTableModel dft = (DefaultTableModel)jTable1.getModel();
+            dft.setRowCount(0);
+            
+            while(rs.next())
+            {
+                Vector v2 = new Vector();
+                 
+                for(int i=0; i<=c; i++){
+                 v2.add(rs.getString("Id"));
+                 v2.add(rs.getString("NameOfTheApplicant"));
+                }
+                dft.addRow(v2);
+            }
            
             //"\`register year`,`Name of the applicant`,`Name dented by initials`,`National identity card number`,`permanent Address`,`Administraive district`,`Telephone Number`,`email`,`Date of birth`,`Age`,`Race`,`Photo`,`Rev of Mr`\"
             
@@ -147,16 +167,16 @@ public class attendance extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(167, 167, 167)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

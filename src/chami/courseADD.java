@@ -388,7 +388,7 @@ public class courseADD extends javax.swing.JFrame {
                 tableLoad(); //load table
 
                 // tableLoad(); //load table
-
+System.out.println("aaaaaaa");
             }
             catch(Exception e)
             {
