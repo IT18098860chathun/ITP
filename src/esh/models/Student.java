@@ -9,6 +9,8 @@ public class Student {
     
     private String regId;
     private String name;
+    private String dob;
+    private String age;
     private String faculty;
     private String acedemicYear;
     private String nic;
@@ -62,6 +64,23 @@ public class Student {
     public void setNic(String nic) {
         this.nic = nic;
     }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+    
     
    
     

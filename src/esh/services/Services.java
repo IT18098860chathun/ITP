@@ -14,9 +14,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import esh.models.Hostels;
 import esh.models.Notices;
+import esh.models.Prolblems;
 import esh.models.Requests;
 import esh.models.Student;
 import esh.util.DB_Connection;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Services {
     //Services services = new Services();
@@ -107,13 +110,13 @@ public class Services {
         String rid = requests.getRequestId();
         
         String insertQuearyRequest = "INSERT INTO hosteldetials(`hostelName`,`datefrom`,`dateto`,`RoomNo`,`sid`)VALUES('"+hname+"','"+df+"','"+dt+"','"+room+"','"+ssid+"')";
-        String removeRequest = "DELETE FROM hosteldetails where `hid`='"+rid+"'";
+        String removeRequest = "DELETE FROM request where `RID`='"+rid+"'";
         try {
             connection = new DB_Connection().getConnection();
-            preparedStatement = connection.prepareStatement(insertQuearyRequest);
-            //preparedStatement = connection.prepareStatement(removeRequest);
-            boolean result = preparedStatement.execute();
-            System.out.println("DB status: "+result);
+            connection.prepareStatement(insertQuearyRequest).execute();
+            connection.prepareStatement(removeRequest).execute();
+            //boolean result = preparedStatement.execute();
+            //System.out.println("DB status: "+result);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
         }finally {		
@@ -123,6 +126,19 @@ public class Services {
     public void updateNotice(Notices notices){
         String status = "Seen";
         String updateQuearyNotice = "UPDATE notice SET `Status`='"+status+"' where `NID`='"+notices.getNid().toString()+"'";
+        try {
+            connection = new DB_Connection().getConnection();
+            preparedStatement = connection.prepareStatement(updateQuearyNotice);
+            preparedStatement.execute();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {		
+                  Services.colsedConnections();
+        }
+    }
+    public void updateProblem(Prolblems prolblems){
+        String status = "Fixed";
+        String updateQuearyNotice = "UPDATE problem SET `Status`='"+status+"' where `PID`='"+prolblems.getPid().toString()+"'";
         try {
             connection = new DB_Connection().getConnection();
             preparedStatement = connection.prepareStatement(updateQuearyNotice);
@@ -198,6 +214,34 @@ public ResultSet tableloadProblems(){
                   //Services.colsedConnections();
         }
     return resultSet;
+}
+public ArrayList getStudentValues(String sid){
+    String loadQueary = "SELECT * FROM student where Id = '"+sid+"'";
+    Student s = new Student();
+    ArrayList arr = new ArrayList();
+    try {
+            connection = new DB_Connection().getConnection();
+            preparedStatement = connection.prepareStatement(loadQueary);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                s.setName(resultSet.getString("NameOfTheApplicant"));
+                s.setDob(resultSet.getString("DateOfBirth"));
+                s.setAge(resultSet.getString("Age"));
+                s.setNic(resultSet.getString("NationalIdentityCardNumber"));
+            }else{
+                JOptionPane.showMessageDialog(null, "Invalid student register id");
+            }
+            arr.add(s.getName());
+            arr.add(s.getDob());
+            arr.add(s.getAge());
+            arr.add(s.getNic());
+           
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {		
+                  //Services.colsedConnections();
+        }
+    return arr;
 }
 public ResultSet search(String rsid){
     String rSid = rsid;
