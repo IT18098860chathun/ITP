@@ -54,10 +54,10 @@ public class attendance extends javax.swing.JFrame {
             {
                 Vector v2 = new Vector();
                  
-                for(int i=0; i<=c; i++){
+                //for(int i=0; i<=c; i++){
                  v2.add(rs.getString("Id"));
                  v2.add(rs.getString("NameOfTheApplicant"));
-                }
+                
                 dft.addRow(v2);
             }
            
